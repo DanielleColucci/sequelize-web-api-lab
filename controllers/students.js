@@ -18,7 +18,19 @@ const index = async (req, res) => {
   }
 }
 
+const update = async (req, res) => {
+  try {
+    const student = await Student.findByPk(req.params.id)
+    student.set(req.body)
+    await student.save()
+    res.status(200).json(student)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+
 module.exports = {
   create,
   index,
+  update,
 }

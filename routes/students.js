@@ -3,5 +3,6 @@ const studentsCtrl = require('../controllers/students.js')
 
 router.post('/', studentsCtrl.create)
 router.get('/', studentsCtrl.index)
+router.put('/:id', studentsCtrl.update)
 
 module.exports = router
