@@ -1,4 +1,4 @@
-const { Student } = require('../models')
+const { Student, Assignment } = require('../models')
 
 const create = async (req, res) => {
   try {
@@ -39,9 +39,20 @@ const deleteStudent = async (req, res) => {
   }
 } 
 
+const addAssignment = async (req, res) => {
+  try {
+    req.body.studentId = req.params.id
+    const assignment = await Assignment.create(req.body)
+    res.status(200).json(assignment)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+
 module.exports = {
   create,
   index,
   update,
-  delete: deleteStudent
+  delete: deleteStudent,
+  addAssignment,
 }

@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Feeding.belongsTo(models.Student, {
+      Assignment.belongsTo(models.Student, {
         foreignKey: 'studentId'
       })
     }
