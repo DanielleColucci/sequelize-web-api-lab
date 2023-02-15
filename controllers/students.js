@@ -11,7 +11,9 @@ const create = async (req, res) => {
 
 const index = async (req, res) => {
   try {
-    const students = await Student.findAll()
+    const students = await Student.findAll({
+      include: [{ model: Assignment, as: 'assignments' }]
+    })
     res.status(200).json(students)
   } catch (error) {
     res.status(500).json(error)
